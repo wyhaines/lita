@@ -101,11 +101,13 @@ describe Lita::Robot, lita: true do
     end
 
     it "rescues interrupts and calls #shut_down" do
+      puts "\n\nWARNING: Raising an error.  This is expected.\n"
       allow_any_instance_of(
         Lita::Adapters::Shell
       ).to receive(:run).and_raise(Interrupt)
       expect_any_instance_of(Lita::Adapters::Shell).to receive(:shut_down)
       subject.run
+      puts "\nERROR FINISHED"
     end
 
     it "logs and quits if the specified adapter can't be found" do
@@ -115,17 +117,21 @@ describe Lita::Robot, lita: true do
     end
 
     it "logs and aborts if the web server's port is in use" do
+      puts "\n\nWARNING: Raising an error.  This is expected.\n"
       allow_any_instance_of(Puma::Server).to receive(:add_tcp_listener).and_raise(Errno::EADDRINUSE)
 
       expect(subject.logger).to receive(:fatal).with(/web server/)
       expect { subject.run }.to raise_error(SystemExit)
+      puts "\nERROR FINISHED"
     end
 
     it "logs and aborts if the web server's port is privileged" do
+      puts "\n\nWARNING: Raising an error.  This is expected.\n"
       allow_any_instance_of(Puma::Server).to receive(:add_tcp_listener).and_raise(Errno::EACCES)
 
       expect(subject.logger).to receive(:fatal).with(/web server/)
       expect { subject.run }.to raise_error(SystemExit)
+      puts "\nERROR FINISHED"
     end
   end
 

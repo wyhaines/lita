@@ -79,8 +79,10 @@ describe Lita do
     end
 
     it "raises a RedisError if it can't connect to Redis" do
+      puts "\n\nWARNING: Raising an error.  This is expected.\n"
       allow(redis_namespace).to receive(:ping).and_raise(Redis::CannotConnectError)
       expect { Lita.redis }.to raise_error(Lita::RedisError, /could not connect to Redis/)
+      puts "\nERROR FINISHED"
     end
 
     context "with test mode off" do
@@ -92,10 +94,12 @@ describe Lita do
       end
 
       it "logs a fatal warning and raises an exception if it can't connect to Redis" do
+        puts "\n\nWARNING: Raising an error.  This is expected.\n"
         allow(redis_namespace).to receive(:ping).and_raise(Redis::CannotConnectError)
 
         expect(Lita.logger).to receive(:fatal)
         expect { Lita.redis }.to raise_error(SystemExit)
+        puts "\nERROR FINISHED\n"
       end
     end
   end
@@ -180,9 +184,11 @@ describe Lita do
     end
 
     it "raises if the configuration is not valid" do
+      puts "\n\nWARNING: Raising an error.  This is expected.\n"
       allow(validator).to receive(:call).and_raise(SystemExit)
 
       expect { described_class.load_config }.to raise_error(SystemExit)
+      puts "\nERROR FINISHED"
     end
   end
 
