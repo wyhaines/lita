@@ -3,18 +3,20 @@ Gemspec/DuplicatedAssignment:
 Gemspec/RequiredRubyVersion:
   Enabled: false
 
-Layout/AlignArguments:
+Layout/ArgumentAlignment:
   Enabled: false
-Layout/AlignHash:
+Layout/HashAlignment:
     Enabled: false
-Layout/AlignParameters:
+Layout/ParameterAlignment:
   Enabled: false
 Layout/EndAlignment:
   EnforcedStyleAlignWith: "variable"
-Layout/IndentFirstHashElement:
+Layout/FirstHashElementIndentation:
   Enabled: false
-Layout/IndentHeredoc:
+Layout/HeredocIndentation:
     Enabled: false
+Layout/LineLength:
+  Max: 100
 
 Lint/NestedMethodDefinition:
   Enabled: false
@@ -27,14 +29,12 @@ Metrics/BlockLength:
   Enabled: false
 Metrics/ClassLength:
   Enabled: false
-Metrics/LineLength:
-  Max: 100
 Metrics/MethodLength:
   Enabled: false
 Metrics/ParameterLists:
   Max: 6
 
-Naming/UncommunicativeMethodParamName:
+Naming/MethodParameterName:
   Enabled: false
 
 Style/AndOr:
