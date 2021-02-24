@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
-require "http_router"
-
+require_relative "lita_http_router"
 require_relative "callback"
 require_relative "http_callback"
 
@@ -11,9 +10,9 @@ module Lita
   class HTTPRoute
     # An +HttpRouter::Route+ class used for dispatch.
     # @since 3.0.0
-    ExtendedRoute = Class.new(HttpRouter::Route) do
-      include HttpRouter::RouteHelper
-      include HttpRouter::GenerationHelper
+    ExtendedRoute = Class.new(Lita::HttpRouter::Route) do
+      include Lita::HttpRouter::RouteHelper
+      include Lita::HttpRouter::GenerationHelper
     end
 
     # The handler registering the route.

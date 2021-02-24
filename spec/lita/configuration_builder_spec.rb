@@ -23,9 +23,11 @@ describe Lita::ConfigurationBuilder do
 
     it "raises an exception if lita_config.rb raises a non-config-validation exception" do
       allow(File).to receive(:exist?).and_return(true)
+      puts "\n\nWARNING: Raising an error.  This is expected.\n"
       allow(described_class).to receive(:load) { Lita.non_existent_method }
       expect(Lita.logger).to receive(:fatal).with(/could not be processed/)
       expect { described_class.load_user_config }.to raise_error(SystemExit)
+      puts "\nERROR FINISHED"
     end
   end
 

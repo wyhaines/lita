@@ -25,6 +25,11 @@ describe Lita::Response do
     let(:body) { instance_double("String") }
 
     it "matches the message body against the pattern" do
+      puts "*****"
+      puts "message(#{message.frozen?}) -- #{message}"
+      puts "body(#{body.frozen?}) -- #{body}"
+      puts "subject(#{subject.frozen?}) -- #{subject}"
+      puts "====="
       allow(message).to receive(:body).and_return(body)
       expect(subject.pattern).to receive(:match).with(message.body)
       subject.match_data

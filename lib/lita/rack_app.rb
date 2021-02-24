@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "http_router"
+require "lita/lita_http_router"
 require "rack"
 
 module Lita
